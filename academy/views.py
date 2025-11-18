@@ -1,11 +1,23 @@
 from django.shortcuts import render
-
+from academy.models import Course,Trainer,Student
 # Create your views here.
 def course(request):
-    return render(request, 'course.html')
+    courses = Course.objects.all()
+    context = {
+        'courses' : courses,
+    }
+    return render(request, 'course.html',context)
 
 def trainer(request):
-    return render(request, 'trainer.html')
+    trainers = Trainer.objects.all()
+    context = {
+        'trainers' : trainers,
+    }
+    return render(request, 'trainer.html',context)
 
 def student(request):
-    return render(request, 'student.html')
+    students = Student.objects.all()
+    context = {
+        'students' : students,
+    }
+    return render(request, 'student.html',context)
